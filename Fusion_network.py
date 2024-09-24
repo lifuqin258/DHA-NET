@@ -14,9 +14,9 @@ class y_glcm(nn.Module):
         x = self.conv(cov)
         return x
 
-class EMA(nn.Module):
+class DHA_NET(nn.Module):
     def __init__(self, channels, c2=None, factor=32, num_classes=117):
-        super(EMA, self).__init__()
+        super(DHA_NET, self).__init__()
         alexnet = models.alexnet(pretrained=True)
         alexnet.eval()
         self.feature_extractor = alexnet.features

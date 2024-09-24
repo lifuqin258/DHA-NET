@@ -1,5 +1,5 @@
 import torch.optim as optim
-from Fusion_network_8 import *
+from Fusion_network import *
 from data_loader import *
 import matplotlib.pyplot as plt
 import time
@@ -10,7 +10,7 @@ test_acc_list = []
 
 start_time = time.time()
 
-model = EMA(channels=256)
+model = DHA_NET(channels=256)
 if torch.cuda.is_available():
     model = model.cuda()
 criterion = nn.CrossEntropyLoss()
@@ -23,7 +23,7 @@ for epoch in range(60):
     total = 0
     print('Epoch {}/{}'.format(epoch, 60))
     model.train()
-    for data in EMA_train_dataloader:
+    for data in DHA_NET_train_dataloader:
         vision_inputs, touch_inputs, labels = data
         if torch.cuda.is_available():
             vision_inputs = vision_inputs.cuda()
@@ -53,7 +53,7 @@ for epoch in range(60):
     correctly_classified = []
     true_labels_correct = []
     with torch.no_grad():
-        for data in EMA_test_dataloader:
+        for data in DHA_NET_test_dataloader:
             vision_inputs, touch_inputs, labels = data
             if torch.cuda.is_available():
                 vision_inputs = vision_inputs.cuda()
