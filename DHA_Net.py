@@ -4,7 +4,7 @@ import torch.nn as nn
 
 class x_glcm(nn.Module):
     def __init__(self):
-        super(y_glcm, self).__init__()
+        super(x_glcm, self).__init__()
         self.conv = nn.Conv2d(3, 3, kernel_size=3, stride=1, padding=1)
 
     def forward(self, x):
