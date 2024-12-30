@@ -15,7 +15,7 @@ class x_glcm(nn.Module):
         return x
 
 class EMA(nn.Module):
-    def __init__(self, channels, c2=None, factor=32, num_classes=63):
+    def __init__(self, channels, c2=None, factor=32):
         super(EMA, self).__init__()
         alexnet = models.alexnet(pretrained=True)
         alexnet.eval()
